@@ -74,9 +74,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
+```bash
 
-## Contributing
+Contributing
 
-### Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-#### Visit my website: farshadsharifi.ir
+Visit my website: farshadsharifi.ir
