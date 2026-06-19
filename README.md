@@ -1,83 +1,263 @@
 # TGJU Rust Client 🦀💸
 
+<div align="center">
+
 [![Crates.io](https://img.shields.io/crates/v/tgju.svg)](https://crates.io/crates/tgju)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Rust](https://img.shields.io/badge/Rust-Async-orange)](https://www.rust-lang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/farshadsharifi/tgju)](https://github.com/farshadsharifi/tgju)
 
-**TGJU Rust Client** is a fast, asynchronous, and robust web scraper library written in Rust to fetch real-time financial data, including **Gold, Silver, Coins, and Currencies** from [tgju.org](https://www.tgju.org). 
+### Fast, Async & Reliable Financial Market Data Scraper for Rust
 
-Developed by **Farshad Sharifi** ([farshadsharifi.ir](https://farshadsharifi.ir) | [GitHub](https://github.com/farshadsharifi)).
+Fetch real-time prices of **Gold, Silver, Coins, and Currencies** directly from **TGJU** using a fully asynchronous Rust client.
+
+**Designed for production-ready Rust backends including Axum, Actix Web, Rocket, and Tokio-based services.**
+
+🌐 Website: https://farshadsharifi.ir  
+📦 Crate: https://crates.io/crates/tgju  
+🔗 Repository: https://github.com/farshadsharifi/tgju
+
+</div>
 
 ---
 
-## 🇮🇷 راهنمای فارسی (Persian Documentation)
+## ✨ Features
 
-این کتابخانه به شما اجازه می‌دهد تا به ساده‌ترین شکل ممکن، قیمت‌های لحظه‌ای طلا، نقره، سکه و ارز را در بک‌اند پروژه‌های Rust خود (مثل سرورهای Actix یا Axum) دریافت کنید. این کتابخانه کاملاً Asynchronous است و از پکیج قدرتمند `scraper` به جای عبارات منظم (Regex) برای پایداری بیشتر در برابر تغییرات سایت مبدا استفاده می‌کند.
+- 🚀 Fully asynchronous architecture powered by Tokio
+- 🦀 Written in pure Rust
+- 🔍 Robust DOM parsing using `scraper`
+- ⚡ Fast and lightweight
+- 🛡️ Strong error handling
+- 📈 Real-time market data retrieval
+- 💰 Supports Gold, Silver, Coins and Currency prices
+- 🔄 No external API dependency
+- 🎯 Stable extraction using `data-market-nameslug`
+- 🏗️ Ready for production environments
 
-### ویژگی‌ها:
-- معماری کاملاً ماژولار و Asynchronous.
-- مدیریت خطای حرفه‌ای (Error Handling).
-- استخراج دقیق قیمت‌ها بر اساس `data-market-nameslug`.
-- عدم وابستگی به API (استفاده از Web Scraping امن).
+---
 
-### روش استفاده (Usage)
+## 📦 Installation
 
-ابتدا کتابخانه را به پروژه خود اضافه کنید:
+Add the crate to your project:
+
 ```bash
 cargo add tgju tokio
+```
 
-سپس در کدهای خود به این شکل استفاده کنید:
+Or manually update your `Cargo.toml`:
+
+```toml
+[dependencies]
+tgju = "0.1.0"
+tokio = { version = "1", features = ["full"] }
+```
+
+---
+
+# 🇮🇷 مستندات فارسی
+
+کتابخانه **TGJU Rust Client** راهکاری ساده، سریع و پایدار برای دریافت قیمت‌های لحظه‌ای بازار ایران از وب‌سایت TGJU است.
+
+این کتابخانه برای استفاده در پروژه‌های Backend مبتنی بر Rust طراحی شده و می‌تواند در کنار فریمورک‌هایی مانند:
+
+- Axum
+- Actix Web
+- Rocket
+- Warp
+
+استفاده شود.
+
+برخلاف بسیاری از پروژه‌های مشابه، این کتابخانه به API وابسته نیست و داده‌ها را مستقیماً از ساختار HTML سایت استخراج می‌کند. همچنین برای افزایش پایداری در برابر تغییرات سایت، از کتابخانه `scraper` به جای Regex استفاده شده است.
+
+### بازارهای پشتیبانی‌شده
+
+- طلا
+- نقره
+- سکه
+- ارز
+
+---
+
+## 🚀 شروع سریع
+
+```rust
 use tgju::{TgjuClient, MarketItem};
-use tokio;
 
 #[tokio::main]
 async fn main() {
-    // ایجاد یک نمونه جدید از کلاینت
     let client = TgjuClient::new();
 
-    // دریافت قیمت طلای 18 عیار
     match client.get_price(MarketItem::Gold18).await {
         Ok(price) => println!("قیمت طلای ۱۸ عیار: {} ریال", price),
         Err(e) => eprintln!("خطا در دریافت قیمت: {}", e),
     }
 
-    // دریافت قیمت دلار
     match client.get_price(MarketItem::Dollar).await {
         Ok(price) => println!("قیمت دلار: {} ریال", price),
-        Err(e) => eprintln!("خطا: {}", e),
+        Err(e) => eprintln!("خطا در دریافت قیمت: {}", e),
     }
 }
+```
 
-🇬🇧 English Documentation
+---
 
-A professional asynchronous wrapper to scrape prices from TGJU. It parses the DOM safely and handles network anomalies smoothly.
-Quick Start
+# 🇬🇧 English Documentation
 
-Add to your Cargo.toml:
-[dependencies]
-tgju = "0.1.0"
-tokio = { version = "1", features = ["full"] }
+## Overview
 
-Example:
+**TGJU Rust Client** is a professional asynchronous web scraper library for retrieving live financial market prices from TGJU.
+
+The library safely parses the HTML DOM and extracts prices using stable market identifiers instead of relying on fragile regular expressions.
+
+Perfect for:
+
+- Financial dashboards
+- Trading tools
+- Telegram bots
+- REST APIs
+- Monitoring systems
+- Rust backend services
+
+---
+
+## Quick Start
+
+```rust
 use tgju::{TgjuClient, MarketItem};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let client = TgjuClient::new();
-    
-    // Fetch 18-karat Gold price
+
     let gold_price = client.get_price(MarketItem::Gold18).await?;
-    println!("18k Gold Price: {}", gold_price);
-    
-    // Fetch Euro price
+    println!("18K Gold Price: {}", gold_price);
+
     let euro_price = client.get_price(MarketItem::Euro).await?;
     println!("Euro Price: {}", euro_price);
 
     Ok(())
 }
-```bash
+```
 
-Contributing
+---
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## Supported Market Items
 
-Visit my website: farshadsharifi.ir
+Examples of available market types:
+
+```rust
+MarketItem::Gold18
+MarketItem::Dollar
+MarketItem::Euro
+```
+
+> Additional market items may be added in future releases.
+
+---
+
+## Error Handling
+
+The library provides structured error handling for:
+
+- Network failures
+- Invalid responses
+- HTML parsing errors
+- Missing market entries
+- Unexpected website changes
+
+Example:
+
+```rust
+match client.get_price(MarketItem::Dollar).await {
+    Ok(price) => println!("Price: {}", price),
+    Err(error) => eprintln!("Failed to fetch price: {}", error),
+}
+```
+
+---
+
+## Why TGJU Rust Client?
+
+### Traditional Approach
+
+- Fragile Regex parsing
+- Poor error handling
+- Blocking requests
+- Difficult maintenance
+
+### TGJU Rust Client
+
+✅ Async-first architecture
+
+✅ DOM-based extraction
+
+✅ Better resilience against HTML changes
+
+✅ Clean and idiomatic Rust API
+
+✅ Production-ready error handling
+
+---
+
+## Roadmap
+
+- [ ] Batch price fetching
+- [ ] Historical data support
+- [ ] Caching layer
+- [ ] Custom HTTP client configuration
+- [ ] Serde integration
+- [ ] WebSocket support (if available)
+
+---
+
+## Contributing
+
+Contributions are welcome!
+
+If you would like to contribute:
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to your branch
+5. Open a Pull Request
+
+For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## Author
+
+### Farshad Sharifi
+
+🌐 Website: https://farshadsharifi.ir
+
+🐙 GitHub: https://github.com/farshadsharifi
+
+📦 Project Repository:
+
+https://github.com/farshadsharifi/tgju
+
+---
+
+## Disclaimer
+
+This project is an independent open-source scraper and is not affiliated with TGJU.
+
+Please use responsibly and respect the target website's terms of service.
+
+---
+
+## License
+
+Released under the MIT License.
+
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+Made with ❤️ and Rust 🦀 by Farshad Sharifi
+
+</div>
