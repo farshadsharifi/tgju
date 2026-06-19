@@ -1,0 +1,21 @@
+[package]
+name = "tgju"
+version = "0.1.0"
+edition = "2021"
+authors = ["Farshad Sharifi <info@farshadsharifi.ir>"]
+description = "A professional and asynchronous Rust client for scraping gold, coin, and currency prices from TGJU.org"
+repository = "https://github.com/farshadsharifi/tgju"
+homepage = "https://farshadsharifi.ir"
+license = "MIT OR Apache-2.0"
+keywords = ["iran", "currency", "gold", "price", "scraper"]
+categories = ["api-bindings", "web-programming"]
+
+[dependencies]
+# برای ارسال درخواست‌های HTTP به صورت Asynchronous
+reqwest = { version = "0.12", features = ["rustls-tls"], default-features = false }
+# برای پارس کردن حرفه‌ای HTML
+scraper = "0.20"
+# برای ساخت خطاهای استاندارد و خوانا
+thiserror = "1.0"
+# رانتایم Async (برای تست و استفاده در پروژه)
+tokio = { version = "1", features = ["full"] }
