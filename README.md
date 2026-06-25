@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Crates.io](https://img.shields.io/crates/v/tgju.svg)](https://crates.io/crates/tgju)
-[![Rust](https://img.shields.io/badge/Rust-Async-orange)](https://www.rust-lang.org/)
+[![Documentation](https://docs.rs/tgju/badge.svg)](https://docs.rs/tgju)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/farshadsharifi/tgju)](https://github.com/farshadsharifi/tgju)
 
